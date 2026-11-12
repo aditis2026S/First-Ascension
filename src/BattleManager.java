@@ -114,7 +114,13 @@ public class BattleManager
             damage -= defender.getDefense();
         }
 
-        return Math.max(1, damage);
+        if (damage < 1)
+        {
+            damage = 1;
+        }
+        
+        return damage;
+
     }
 
     /**

@@ -62,6 +62,11 @@ public class LinkedQueue<T>
 
     public T peek()
     {
+        if (isEmpty())
+        {
+            throw new NoSuchElementException("The queue is empty");
+        }
+        
         return front.getData();
 
     }
@@ -92,11 +97,6 @@ public class LinkedQueue<T>
 
     public boolean remove(T value)
     {
-        Node<T> searchNode = new Node<T>(null);
-        Node<T> beforeSearchNode = new Node<T>(null);
-        searchNode = front.getNext();
-        beforeSearchNode = front;
-        
         if(front == null)
         {
             return false;
@@ -107,6 +107,10 @@ public class LinkedQueue<T>
             this.dequeue();
             return true;
         }
+        
+        Node<T> searchNode = front.getNext();
+        Node<T> beforeSearchNode = front;
+        
         while (searchNode != null)
         {
             if (searchNode.getData().equals(value))

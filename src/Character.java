@@ -55,14 +55,24 @@ public class Character
         return currentHealth;
     }
     
+    public int getMaxHealth()
+    {
+        return maxHealth;
+    }
+    
     public void takeDamage(int damage)
     {
-        currentHealth = currentHealth - damage;
+        currentHealth -= damage;
+
+        if (currentHealth < 0)
+        {
+            currentHealth = 0;
+        }
     }
     
     public boolean isAlive()
     {
-        return currentHealth != 0;
+        return currentHealth > 0;
     }
     
     public void defend()

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Stores all characters available for selection in First Ascension.
  *
