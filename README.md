@@ -7,7 +7,7 @@ which affect the outcome of battles.
 
 
 # Reflection
-Overall, nothing much changes from our specification that what we actually
+Overall, nothing much changed from our specification that what we actually
 built. There were 2 methods in battlemanager where I decided to combine into
 one but for the most part, we followed what we put in our spec.  When it comes
 to the model, it stays seperate from the view. We didn't have to move anything 
@@ -27,7 +27,8 @@ classes working together.
 # Next Steps
 Overall, we finished the MVP but we could implement a more effective 
 defense system, or a more effective battle system that allows for more 
-strategy. Our next step is to perform more thorough testing of the game to 
+strategy. Also, we will work on making the visuals better.
+Our next step is to perform more thorough testing of the game to 
 make sure all features work as expected. This includes testing different 
 battle scenarios, checking that defeated characters are removed from the 
 queue correctly, verifying that the correct player wins, and making sure 
