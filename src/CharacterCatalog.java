@@ -17,34 +17,34 @@ public class CharacterCatalog {
         characters = new ArrayList<Character>();
 
         // Original characters
-        characters.add(new Character("The Conqueror", 7, 9, 6, 100));
-        characters.add(new Character("The Warden", 5, 6, 10, 115));
-        characters.add(new Character("The Phantom", 10, 8, 5, 95));
-        characters.add(new Character("The Harbinger", 8, 9, 5, 95));
-        characters.add(new Character("The Ascendant", 7, 7, 8, 105));
-        characters.add(new Character("The Worldbreaker", 5, 10, 6, 100));
-        characters.add(new Character("The Stormbringer", 9, 7, 6, 100));
-        characters.add(new Character("The Unbroken", 5, 6, 9, 115));
-        characters.add(new Character("The Blob", 5, 6, 10, 115));
-        characters.add(new Character("The Cat", 10, 7, 5, 95));
-        characters.add(new Character("The Wind", 10, 8, 5, 95));
-        characters.add(new Character("The Reaper", 7, 10, 5, 95));
-        characters.add(new Character("The Titan", 5, 8, 9, 115));
-        characters.add(new Character("The Trickster", 9, 7, 6, 100));
-        characters.add(new Character("The Phoenix", 8, 8, 6, 105));
-        characters.add(new Character("The Serpent", 8, 9, 5, 95));
-        characters.add(new Character("The Oracle", 7, 6, 9, 110));
-        characters.add(new Character("The Berserker", 6, 10, 5, 95));
-        characters.add(new Character("The Guardian", 5, 7, 10, 115));
-        characters.add(new Character("The Eclipse", 9, 8, 6, 100));
-        characters.add(new Character("The Frostborn", 6, 7, 9, 110));
-        characters.add(new Character("The Monarch", 7, 8, 7, 105));
-        characters.add(new Character("The Specter", 10, 7, 5, 95));
-        characters.add(new Character("The Colossus", 5, 9, 9, 110));
-        characters.add(new Character("The Inferno", 8, 10, 5, 95));
-        characters.add(new Character("The Wanderer", 8, 7, 7, 105));
-        characters.add(new Character("The Leviathan", 6, 9, 8, 110));
-        characters.add(new Character("The Jester", 9, 6, 7, 100));
+        characters.add(new Character("The Conqueror", 7, 9, 6, 50));
+        characters.add(new Character("The Warden", 5, 6, 10, 65));
+        characters.add(new Character("The Phantom", 10, 8, 5, 45));
+        characters.add(new Character("The Harbinger", 8, 9, 5, 45));
+        characters.add(new Character("The Ascendant", 7, 7, 8, 55));
+        characters.add(new Character("The Worldbreaker", 5, 10, 6, 50));
+        characters.add(new Character("The Stormbringer", 9, 7, 6, 50));
+        characters.add(new Character("The Unbroken", 5, 6, 9, 75));
+        characters.add(new Character("The Blob", 5, 6, 10, 75));
+        characters.add(new Character("The Cat", 10, 7, 5, 45));
+        characters.add(new Character("The Wind", 10, 8, 5, 45));
+        characters.add(new Character("The Reaper", 7, 10, 5, 45));
+        characters.add(new Character("The Titan", 5, 8, 9, 75));
+        characters.add(new Character("The Trickster", 9, 7, 6, 50));
+        characters.add(new Character("The Phoenix", 8, 8, 6, 55));
+        characters.add(new Character("The Serpent", 8, 9, 5, 45));
+        characters.add(new Character("The Oracle", 7, 6, 9, 60));
+        characters.add(new Character("The Berserker", 6, 10, 5, 45));
+        characters.add(new Character("The Guardian", 5, 7, 10, 70));
+        characters.add(new Character("The Eclipse", 9, 8, 6, 50));
+        characters.add(new Character("The Frostborn", 6, 7, 9, 60));
+        characters.add(new Character("The Monarch", 7, 8, 7, 55));
+        characters.add(new Character("The Specter", 10, 7, 5, 45));
+        characters.add(new Character("The Colossus", 5, 9, 9, 60));
+        characters.add(new Character("The Inferno", 8, 10, 5, 45));
+        characters.add(new Character("The Wanderer", 8, 7, 7, 55));
+        characters.add(new Character("The Leviathan", 6, 9, 8, 60));
+        characters.add(new Character("The Jester", 9, 6, 7, 50));
     }
 
     /**

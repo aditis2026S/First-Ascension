@@ -22,6 +22,17 @@ public class GameView
         System.out.println("1. Start Game");
         System.out.println("2. Exit");
     }
+    
+    /**
+     * Gets the player's main menu selection.
+     *
+     * @return the player's menu choice
+     */
+    public String getMainMenuChoice()
+    {
+        System.out.print("Enter your choice: ");
+        return scanner.nextLine();
+    }
 
     public void displayCharacterCatalog(
         ArrayList<Character> characters)
@@ -58,20 +69,39 @@ public class GameView
         System.out.println("Health: " + character.getHealth());
     }
 
-    public void displayBattleStatus(Player player1,
-        Player player2)
-    {
-        System.out.println("\n=== BATTLE STATUS ===");
-
-        displayTeam(player1);
-        displayTeam(player2);
-    }
-
     public void displayBattleOptions()
     {
         System.out.println("\nChoose your move:");
         System.out.println("1. Attack");
         System.out.println("2. Defend");
+    }
+    
+    public void displayBattleStatus(Player player1, Player player2)
+    {
+        System.out.println("\n=== BATTLE STATUS ===");
+
+        displayPlayerBattleStatus(player1);
+        displayPlayerBattleStatus(player2);
+    }
+
+    private void displayPlayerBattleStatus(Player player)
+    {
+        System.out.println("\n" + player.getName() + "'s Team:");
+
+        System.out.println("Characters remaining: "
+            + player.getTeam().size());
+
+        if (!player.getTeam().isEmpty())
+        {
+            Character active = player.getTeam().peek();
+
+            System.out.println("Front character: "
+                + active.getName());
+
+            System.out.println("Health: "
+                + active.getHealth() + "/"
+                + active.getMaxHealth());
+        }
     }
 
     public void displayWinner(String winner)

@@ -25,19 +25,38 @@ public class GameController {
      * Starts the overall game.
      */
     public void startGame() {
-        view.displayMainMenu();
+        boolean running = true;
 
-        setupPlayers();
+        while (running)
+        {
+            view.displayMainMenu();
+            String choice = view.getMainMenuChoice();
 
-        selectCharacters(player1);
-        confirmTeam(player1);
+            if (choice.equals("1"))
+            {
+                setupPlayers();
 
-        selectCharacters(player2);
-        confirmTeam(player2);
+                selectCharacters(player1);
+                confirmTeam(player1);
 
-        battleManager = new BattleManager(player1, player2);
+                selectCharacters(player2);
+                confirmTeam(player2);
 
-        runBattle();
+                battleManager = new BattleManager(player1, player2);
+                runBattle();
+
+                running = false;
+            }
+            else if (choice.equals("2"))
+            {
+                System.out.println("Thanks for playing First Ascension!");
+                running = false;
+            }
+            else
+            {
+                System.out.println("Invalid choice. Please enter 1 or 2.");
+            }
+        }
     }
 
     /**
@@ -55,6 +74,12 @@ public class GameController {
      */
     public void selectCharacters(Player player) {
         while (!player.isTeamFull()) {
+            System.out.println("\n" + player.getName()
+            + " - Choose your characters");
+
+            System.out.println("Characters selected: "
+            + player.getTeam().size() + "/3");
+        
             view.displayCharacterCatalog(
                 characterCatalog.getAllCharacters());
 
@@ -113,28 +138,26 @@ public class GameController {
         while (!battleManager.isGameOver()) {
             Player currentPlayer =
                 battleManager.getCurrentPlayer();
-
-            Character attacker =
-                battleManager.getActiveCharacter(currentPlayer);
-
-            Player opponent = (currentPlayer == player1)
-                ? player2 : player1;
-
-            Character defender =
-                battleManager.getActiveCharacter(opponent);
+            
+            System.out.println(
+                currentPlayer.getName() + "'s turn!");
 
             view.displayBattleStatus(player1, player2);
             view.displayBattleOptions();
 
             String move = view.getMoveChoice();
 
-            processMove(currentPlayer, move);
+            boolean moveProcessed = processMove(currentPlayer, move);
 
-            if (battleManager.isGameOver()) {
+            if (battleManager.isGameOver())
+            {
                 break;
             }
 
-            battleManager.advanceTurn();
+            if (moveProcessed)
+            {
+                battleManager.advanceTurn();
+            }
         }
 
         Player winner = battleManager.getWinner();
@@ -150,20 +173,24 @@ public class GameController {
      * @param player the player making the move
      * @param move the selected move
      */
-    public void processMove(Player player, String move) {
-        if (player != battleManager.getCurrentPlayer()) {
-            return;
+    public boolean processMove(Player player, String move)
+    {
+        if (player != battleManager.getCurrentPlayer())
+        {
+            return false;
         }
 
         Character character =
             battleManager.getActiveCharacter(player);
 
-        if (character == null || move == null) {
+        if (character == null || move == null)
+        {
             System.out.println("Invalid move.");
-            return;
+            return false;
         }
 
-        if (move.equalsIgnoreCase("attack")) {
+        if (move.equalsIgnoreCase("attack") || move.equals("1"))
+        {
             Player opponent = (player == player1)
                 ? player2 : player1;
 
@@ -171,15 +198,20 @@ public class GameController {
                 battleManager.getActiveCharacter(opponent);
 
             battleManager.attack(character, defender);
-
             battleManager.checkDefeatedCharacters();
+
+            return true;
         }
-        else if (move.equalsIgnoreCase("defend")) {
+        else if (move.equalsIgnoreCase("defend") || move.equals("2"))
+        {
             battleManager.defend(character);
+            return true;
         }
-        else {
+        else
+        {
             System.out.println(
-                "Invalid move. Choose attack or defend.");
+                "Invalid move. Choose 1 (Attack) or 2 (Defend).");
+            return false;
         }
     }
 
