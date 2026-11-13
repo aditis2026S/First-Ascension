@@ -28,9 +28,10 @@ classes working together.
  
 # Next Steps
 Overall, we finished the MVP but we could implement a more effective 
-defense system, or a more effective battle system that allows for more 
-strategy. Also, we will work on making the visuals better.
-Our next step is to perform more thorough testing of the game to 
+defense system, or a more effective battle system. Also, having an option to
+display stats will be useful for the game.
+Also, we will work on making the visuals better and adding more
+characters. Our next step is to perform more thorough testing of the game to 
 make sure all features work as expected. This includes testing different 
 battle scenarios, checking that defeated characters are removed from the 
 queue correctly, verifying that the correct player wins, and making sure 
@@ -41,7 +42,9 @@ system, or we will add new abilities and moves for the characters to use. Right
 now, characters can attack and defend but we could at a status move that can 
 prevent a character from attacking, using the random func. Because we are adding
 this, we need to test to see if the new abillities are working and if the timer
-system is counting down properly. The timer system would be done by Ayo and 
+system is counting down properly. Both of these stretch goals would probably be
+put into the battle manager class and the GameController and the GameView will
+change to add these implementations. The timer system would be done by Ayo and 
 the addition of new abillities and moves would be implemented by Kevin or Aditi.
 
 
