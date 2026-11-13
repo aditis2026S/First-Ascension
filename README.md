@@ -9,9 +9,11 @@ which affect the outcome of battles.
 # Reflection
 Overall, nothing much changed from our specification that what we actually
 built. There were 2 methods in battlemanager where I decided to combine into
-one but for the most part, we followed what we put in our spec.  When it comes
-to the model, it stays seperate from the view. We didn't have to move anything 
-across the model/view line to make our program work.
+one but for the most part, we followed what we put in our spec. Also we didn't
+put an option to display stats mainly because we want the model to work and we
+wanted an element of suprise but that may be something to add in the future.
+When it comes to the model, it stays seperate from the view. We didn't have 
+to move anything across the model/view line to make our program work.
 
 One challenge was coordinating the responsibilities of the different classes. 
 We needed to make sure that the Controller handled user input without 
