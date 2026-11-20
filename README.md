@@ -114,7 +114,7 @@ system. The other stretch goals, like the double battle system, will be dropped
 because they are simply too hard to implement and we want to focus on making
 sure the program flows smoothly.
 
-For our demo plan, from 0-30 sec, we will introduce what first ascention is and
+For our demo plan, from 0-30 sec, we will introduce what first ascension is and
 explain how to play the game. From 30 sec to 1 min, we will show the character 
 selection menu and demonstrate random selection for both players. Next 30 
 seconds, display both teams and explain how characters are stored in FIFO order.
