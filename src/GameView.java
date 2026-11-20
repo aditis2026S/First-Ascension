@@ -24,6 +24,27 @@ public class GameView
     }
     
     /**
+     * Displays the character selection options.
+     */
+    public void displaySelectionMenu()
+    {
+        System.out.println("\nHow would you like to select your characters?");
+        System.out.println("1. Manual Selection");
+        System.out.println("2. Random Selection");
+    }
+    
+    /**
+     * Gets the player's character selection method.
+     *
+     * @return the player's selection choice
+     */
+    public String getSelectionMode()
+    {
+        System.out.print("Enter your choice: ");
+        return scanner.nextLine();
+    }
+    
+    /**
      * Gets the player's main menu selection.
      *
      * @return the player's menu choice

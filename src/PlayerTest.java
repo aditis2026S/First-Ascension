@@ -3,7 +3,7 @@ import student.TestCase;
 /**
  * Tests for the Player class.
  */
-public class PlayerTest extends TestCase {
+public class PlayerTest extends student.TestCase {
 
     private Player player;
     private Character a;

@@ -4,6 +4,8 @@
  * @author Aditi Sambaraju
  * @version 2026.11.12
  */
+import java.util.ArrayList;
+import java.util.Collections;
 public class GameController {
 
     private GameView view;
@@ -24,7 +26,8 @@ public class GameController {
     /**
      * Starts the overall game.
      */
-    public void startGame() {
+    public void startGame()
+    {
         boolean running = true;
 
         while (running)
@@ -36,10 +39,10 @@ public class GameController {
             {
                 setupPlayers();
 
-                selectCharacters(player1);
+                chooseCharacters(player1);
                 confirmTeam(player1);
 
-                selectCharacters(player2);
+                chooseCharacters(player2);
                 confirmTeam(player2);
 
                 battleManager = new BattleManager(player1, player2);
@@ -55,6 +58,32 @@ public class GameController {
             else
             {
                 System.out.println("Invalid choice. Please enter 1 or 2.");
+            }
+        }
+    }
+    
+    public void chooseCharacters(Player player)
+    {
+        boolean choosing = true;
+
+        while (choosing)
+        {
+            view.displaySelectionMenu();
+            String choice = view.getSelectionMode();
+
+            if (choice.equals("1"))
+            {
+                selectCharacters(player);
+                choosing = false;
+            }
+            else if (choice.equals("2"))
+            {
+                randomlySelectCharacters(player);
+                choosing = false;
+            }
+            else
+            {
+                System.out.println("Invalid choice. Please try again.");
             }
         }
     }
@@ -101,6 +130,36 @@ public class GameController {
                 view.displayTeam(player);
             }
         }
+    }
+    
+    /**
+     * Randomly selects three characters for a player.
+     *
+     * @param player the player receiving random characters
+     */
+    public void randomlySelectCharacters(Player player) {
+        if (player == null || player.isTeamLocked()
+            || player.getTeam().size() != 0) {
+            System.out.println("Cannot randomly select characters.");
+            return;
+        }
+
+        ArrayList<Character> available =
+            new ArrayList<>(characterCatalog.getAllCharacters());
+
+        if (available.size() < 3) {
+            System.out.println(
+                "Not enough characters available.");
+            return;
+        }
+
+        Collections.shuffle(available);
+
+        for (int i = 0; i < 3; i++) {
+            player.addCharacter(available.get(i));
+        }
+
+        view.displayTeam(player);
     }
 
     /**
