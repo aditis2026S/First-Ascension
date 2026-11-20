@@ -9,6 +9,7 @@ public class LinkedQueueTest
     private LinkedQueue<Integer> intQueue;
 
     // ~ Constructors ..........................................................
+    @BeforeEach
     public void setUp()
     {
         strQueue = new LinkedQueue<String>();
@@ -21,6 +22,7 @@ public class LinkedQueueTest
 
 
     // ~Public Methods ........................................................
+    @Test
     public void testEnqueue()
     {
         assertTrue(strQueue.isEmpty());
@@ -34,7 +36,7 @@ public class LinkedQueueTest
 
     }
 
-
+    @Test
     public void testDequeue()
     {
         assertEquals(intQueue.peek(), 2);
@@ -42,7 +44,7 @@ public class LinkedQueueTest
         assertEquals(intQueue.peek(), 5);
     }
 
-
+    @Test
     public void testDequeueEmpty()
     {
         try
@@ -56,14 +58,14 @@ public class LinkedQueueTest
         }
     }
 
-
+    @Test
     public void testPeek()
     {
         assertEquals(intQueue.peek(), 2);
 
     }
 
-
+    @Test
     public void testPeekEmpty()
     {
         try
@@ -77,7 +79,7 @@ public class LinkedQueueTest
         }
     }
 
-
+    @Test
     public void testIsEmpty()
     {
         assertTrue(strQueue.isEmpty());
@@ -86,7 +88,7 @@ public class LinkedQueueTest
         assertEquals(3, intQueue.size());
     }
 
-
+    @Test
     public void testClear()
     {
         strQueue.clear();
@@ -97,7 +99,7 @@ public class LinkedQueueTest
         assertEquals(0, intQueue.size());
     }
 
-
+    @Test
     public void testRemoveFront()
     {
         assertTrue(intQueue.remove(2));
@@ -106,7 +108,7 @@ public class LinkedQueueTest
 
     }
 
-
+    @Test
     public void testRemoveMiddle()
     {
         assertTrue(intQueue.remove(5));
@@ -115,7 +117,7 @@ public class LinkedQueueTest
         assertEquals(10, (int)intQueue.dequeue());
     }
 
-
+    @Test
     public void testRemoveRear()
     {
         assertTrue(intQueue.remove(10));
@@ -127,7 +129,7 @@ public class LinkedQueueTest
         assertEquals(7, (int)intQueue.dequeue());
     }
 
-
+    @Test
     public void testRemoveNotFound()
     {
         assertFalse(intQueue.remove(99));
@@ -135,13 +137,13 @@ public class LinkedQueueTest
 
     }
 
-
+    @Test
     public void testRemoveEmpty()
     {
         assertFalse(strQueue.remove("nothing"));
     }
 
-
+    @Test
     public void testRemoveOnlyElement()
     {
         strQueue.enqueue("solo");
