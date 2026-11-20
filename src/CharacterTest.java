@@ -1,99 +1,90 @@
-<<<<<<< Updated upstream
-import static org.junit.jupiter.api.Assertions.*;
+import student.TestCase;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+/**
+ * Tests for the Character class.
+ */
+public class CharacterTest extends TestCase {
 
-public class CharacterTest
-{
-    // ~ Fields ................................................................
-    private Character hero;
+    private Character character;
 
-    // ~ Setup .................................................................
-    @BeforeEach
-    public void setUp()
-    {
-        hero = new Character("Hero", 10, 15, 5, 100);
-
+    /**
+     * Creates a character before each test.
+     */
+    public void setUp() {
+        character = new Character("Jester", 20, 15, 5, 100);
     }
 
-
-    @Test
-    public void testStartsAtFullHealth()
-    {
-        assertEquals(100, hero.getHealth());
-        assertEquals(hero.getMaxHealth(), hero.getHealth());
+    /**
+     * Tests the constructor and getters.
+     */
+    public void testConstructorAndGetters() {
+        assertEquals("Jester", character.getName());
+        assertEquals(20, character.getSpeed());
+        assertEquals(15, character.getAttack());
+        assertEquals(5, character.getDefense());
+        assertEquals(100, character.getMaxHealth());
+        assertEquals(100, character.getHealth());
+        assertTrue(character.isAlive());
+        assertFalse(character.isDefending());
     }
 
+    /**
+     * Tests taking damage.
+     */
+    public void testTakeDamage() {
+        character.takeDamage(30);
 
-    @Test
-    public void testStartsNotDefending()
-    {
-        assertFalse(hero.isDefending());
+        assertEquals(70, character.getHealth());
+        assertTrue(character.isAlive());
     }
 
+    /**
+     * Tests that health cannot go below zero.
+     */
+    public void testTakeDamageBelowZero() {
+        character.takeDamage(150);
 
-    @Test
-    public void testStartsAlive()
-    {
-        assertTrue(hero.isAlive());
+        assertEquals(0, character.getHealth());
+        assertFalse(character.isAlive());
     }
 
+    /**
+     * Tests taking zero damage.
+     */
+    public void testTakeZeroDamage() {
+        character.takeDamage(0);
 
-    @Test
-    public void testTakeDamage()
-    {
-        hero.takeDamage(30);
-        assertEquals(70, hero.getHealth());
-        assertEquals(100, hero.getMaxHealth());
-        assertTrue(hero.isAlive());
+        assertEquals(100, character.getHealth());
+        assertTrue(character.isAlive());
     }
 
+    /**
+     * Tests the defend method.
+     */
+    public void testDefend() {
+        character.defend();
 
-    @Test
-    public void testTakeDamageMultipleTimes()
-    {
-        hero.takeDamage(20);
-        hero.takeDamage(35);
-        assertEquals(45, hero.getHealth());
+        assertTrue(character.isDefending());
     }
 
+    /**
+     * Tests ending the defense state.
+     */
+    public void testEndDefense() {
+        character.defend();
+        character.endDefense();
 
-    @Test
-    public void testTakeZeroDamage()
-    {
-        hero.takeDamage(0);
-        assertEquals(100, hero.getHealth());
-        assertTrue(hero.isAlive());
+        assertFalse(character.isDefending());
     }
 
+    /**
+     * Tests that a character with zero health is not alive.
+     */
+    public void testIsAlive() {
+        assertTrue(character.isAlive());
 
-    @Test
-    public void testTakeDamageExactlyLethal()
-    {
-        hero.takeDamage(100);
-        assertEquals(0, hero.getHealth());
-        assertFalse(hero.isAlive());
+        character.takeDamage(100);
+
+        assertFalse(character.isAlive());
     }
-
-
-    @Test
-    public void testConstructorAndGetters()
-    {
-        assertEquals("Hero", hero.getName());
-        assertEquals(10, hero.getSpeed());
-        assertEquals(15, hero.getAttack());
-        assertEquals(5, hero.getDefense());
-        assertEquals(100, hero.getMaxHealth());
-    }
-=======
-public class CharacterTest
-{
-    //~ Fields ................................................................
-
-    //~ Constructors ..........................................................
-
-    //~Public  Methods ........................................................
->>>>>>> Stashed changes
-
 }

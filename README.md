@@ -62,3 +62,70 @@ the addition of new abillities and moves would be implemented by Kevin or Aditi.
 Gen ai was used to help with the implementation of the classes and to help 
 connect each class with eachother to get the program to work. For example, 
 we used AI to help come up with an attack formula.
+#------------------------------------------------------------------
+# Deliverable 4
+# First-Ascension
+First Ascension is a two-player, turn-based battle 
+game where each player selects a team of three characters from a predefined 
+character catalog. Players take turns choosing to attack or defend. 
+Characters have different stats, including speed, attack, defense, and health, 
+which affect the outcome of battles.
+
+#Reflection
+For Deliverable 4, we implemented our First Ascension prototype and added 
+random character selection as our non-trivial stretch goal. The feature 
+allows each player to choose between manually selecting their characters or 
+having three characters randomly selected from the catalog.
+
+The random selection feature mainly affects GameController and the GameView
+classes.
+
+
+
+
+
+#Next Steps
+
+| Class | Team Member | Contribution |
+|---|---|---|
+| CharacterTest.java | Ayomide | Created and implemented |
+| LinkedQueueTest.java |  | Created and implemented |
+| PlayerTest.java | Aditi | Created and implemented |
+| CharacterCatalogTest.java | Aditi | Created and implemented |
+| BattleManagerTest.java | Aditi | Created and implemented |
+| Stretch Goal | Aditi | Created and implemented |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
