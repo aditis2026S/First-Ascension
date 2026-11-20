@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -85,5 +86,14 @@ public class CharacterTest
         assertEquals(5, hero.getDefense());
         assertEquals(100, hero.getMaxHealth());
     }
+=======
+public class CharacterTest
+{
+    //~ Fields ................................................................
+
+    //~ Constructors ..........................................................
+
+    //~Public  Methods ........................................................
+>>>>>>> Stashed changes
 
 }
