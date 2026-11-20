@@ -1,16 +1,19 @@
-import student.TestCase;
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for the CharacterCatalog class.
  */
-public class CharacterCatalogTest extends TestCase {
+public class CharacterCatalogTest {
 
     private CharacterCatalog catalog;
 
     /**
      * Sets up the character catalog before each test.
      */
+    @BeforeEach
     public void setUp() {
         catalog = new CharacterCatalog();
     }
@@ -18,6 +21,7 @@ public class CharacterCatalogTest extends TestCase {
     /**
      * Tests getting all characters from the catalog.
      */
+    @Test
     public void testGetAllCharacters() {
         ArrayList<Character> characters = catalog.getAllCharacters();
 
@@ -28,6 +32,7 @@ public class CharacterCatalogTest extends TestCase {
     /**
      * Tests finding a character that exists.
      */
+    @Test
     public void testFindCharacter() {
         Character expected = catalog.getAllCharacters().get(0);
 
@@ -40,6 +45,7 @@ public class CharacterCatalogTest extends TestCase {
     /**
      * Tests finding a character that does not exist.
      */
+    @Test
     public void testFindNonexistentCharacter() {
         Character actual = catalog.findCharacter("Not a Character");
 
@@ -49,6 +55,7 @@ public class CharacterCatalogTest extends TestCase {
     /**
      * Tests checking whether a character exists.
      */
+    @Test
     public void testContainsCharacter() {
         Character character = catalog.getAllCharacters().get(0);
 
@@ -58,6 +65,7 @@ public class CharacterCatalogTest extends TestCase {
     /**
      * Tests checking whether a nonexistent character exists.
      */
+    @Test
     public void testContainsNonexistentCharacter() {
         assertFalse(catalog.containsCharacter("Not a Character"));
     }
@@ -65,6 +73,7 @@ public class CharacterCatalogTest extends TestCase {
     /**
      * Tests checking whether a null character name exists.
      */
+    @Test
     public void testContainsNull() {
         assertFalse(catalog.containsCharacter(null));
     }

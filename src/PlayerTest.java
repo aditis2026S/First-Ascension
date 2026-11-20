@@ -1,9 +1,11 @@
-import student.TestCase;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for the Player class.
  */
-public class PlayerTest extends TestCase {
+public class PlayerTest {
 
     private Player player;
     private Character a;
@@ -14,6 +16,7 @@ public class PlayerTest extends TestCase {
     /**
      * Creates a fresh player and four distinct characters before each test.
      */
+    @BeforeEach
     public void setUp() {
         player = new Player("Alice");
         a = new Character("Knight", 5, 10, 4, 50);
@@ -25,11 +28,13 @@ public class PlayerTest extends TestCase {
     // ---------- constructor / getName ----------
 
     /** Normal case: name is stored and returned. */
+    @Test
     public void testGetName() {
         assertEquals("Alice", player.getName());
     }
 
     /** Bad input: null name is rejected. */
+    @Test
     public void testConstructorNullName() {
         Exception thrown = null;
         try {
@@ -42,6 +47,7 @@ public class PlayerTest extends TestCase {
     }
 
     /** Bad input: empty name is rejected. */
+    @Test
     public void testConstructorEmptyName() {
         Exception thrown = null;
         try {
@@ -54,6 +60,7 @@ public class PlayerTest extends TestCase {
     }
 
     /** Bad input: blank (spaces only) name is rejected. */
+    @Test
     public void testConstructorBlankName() {
         Exception thrown = null;
         try {
@@ -68,6 +75,7 @@ public class PlayerTest extends TestCase {
     // ---------- getTeam ----------
 
     /** Bad input case: team is empty and unlocked before adding anything. */
+    @Test
     public void testGetTeamEmptyInitially() {
         assertNotNull(player.getTeam());
         assertTrue(player.getTeam().isEmpty());
@@ -76,6 +84,7 @@ public class PlayerTest extends TestCase {
     }
 
     /** Normal case: team reflects added characters in FIFO order. */
+    @Test
     public void testGetTeamAfterAdding() {
         player.addCharacter(a);
         player.addCharacter(b);
@@ -86,18 +95,21 @@ public class PlayerTest extends TestCase {
     // ---------- addCharacter ----------
 
     /** Normal case: a unique character is added. */
+    @Test
     public void testAddCharacterNormal() {
         assertTrue(player.addCharacter(a));
         assertEquals(1, player.getTeam().size());
     }
 
     /** Bad input: null is rejected. */
+    @Test
     public void testAddCharacterNull() {
         assertFalse(player.addCharacter(null));
         assertEquals(0, player.getTeam().size());
     }
 
     /** Bad input: the same character twice is rejected. */
+    @Test
     public void testAddCharacterDuplicateSameObject() {
         assertTrue(player.addCharacter(a));
         assertFalse(player.addCharacter(a));
@@ -105,6 +117,7 @@ public class PlayerTest extends TestCase {
     }
 
     /** Bad input: a different object with the same name is rejected. */
+    @Test
     public void testAddCharacterDuplicateSameName() {
         Character copy = new Character("Knight", 1, 1, 1, 1);
         assertTrue(player.addCharacter(a));
@@ -113,6 +126,7 @@ public class PlayerTest extends TestCase {
     }
 
     /** Bad input: a fourth character is rejected. */
+    @Test
     public void testAddCharacterFourth() {
         assertTrue(player.addCharacter(a));
         assertTrue(player.addCharacter(b));
@@ -122,6 +136,7 @@ public class PlayerTest extends TestCase {
     }
 
     /** Bad input: adding after locking is rejected. */
+    @Test
     public void testAddCharacterAfterLock() {
         player.addCharacter(a);
         player.addCharacter(b);
@@ -132,6 +147,7 @@ public class PlayerTest extends TestCase {
     }
 
     /** The duplicate check must not disturb the queue order. */
+    @Test
     public void testAddCharacterKeepsOrderAfterDuplicateCheck() {
         player.addCharacter(a);
         player.addCharacter(b);
@@ -145,6 +161,7 @@ public class PlayerTest extends TestCase {
     // ---------- removeCharacter ----------
 
     /** Normal case: removing before locking succeeds. */
+    @Test
     public void testRemoveCharacterNormal() {
         player.addCharacter(a);
         player.addCharacter(b);
@@ -156,6 +173,7 @@ public class PlayerTest extends TestCase {
     }
 
     /** Bad input: removing a character that is not on the team. */
+    @Test
     public void testRemoveCharacterNotPresent() {
         player.addCharacter(a);
         assertFalse(player.removeCharacter(b));
@@ -163,6 +181,7 @@ public class PlayerTest extends TestCase {
     }
 
     /** Bad input: removing null. */
+    @Test
     public void testRemoveCharacterNull() {
         player.addCharacter(a);
         assertFalse(player.removeCharacter(null));
@@ -170,11 +189,13 @@ public class PlayerTest extends TestCase {
     }
 
     /** Bad input: removing from an empty team. */
+    @Test
     public void testRemoveCharacterEmptyTeam() {
         assertFalse(player.removeCharacter(a));
     }
 
     /** Bad input: removing after locking is rejected. */
+    @Test
     public void testRemoveCharacterAfterLock() {
         player.addCharacter(a);
         player.addCharacter(b);
@@ -187,6 +208,7 @@ public class PlayerTest extends TestCase {
     // ---------- isTeamFull ----------
 
     /** Normal case: three characters means full. */
+    @Test
     public void testIsTeamFullTrue() {
         player.addCharacter(a);
         player.addCharacter(b);
@@ -195,11 +217,13 @@ public class PlayerTest extends TestCase {
     }
 
     /** Bad input: empty team is not full. */
+    @Test
     public void testIsTeamFullEmpty() {
         assertFalse(player.isTeamFull());
     }
 
     /** Partially filled team is not full. */
+    @Test
     public void testIsTeamFullPartial() {
         player.addCharacter(a);
         player.addCharacter(b);
@@ -209,6 +233,7 @@ public class PlayerTest extends TestCase {
     // ---------- lockTeam / isTeamLocked ----------
 
     /** Normal case: a team of exactly three locks. */
+    @Test
     public void testLockTeamNormal() {
         player.addCharacter(a);
         player.addCharacter(b);
@@ -218,6 +243,7 @@ public class PlayerTest extends TestCase {
     }
 
     /** Bad input: locking an empty team throws. */
+    @Test
     public void testLockTeamEmpty() {
         Exception thrown = null;
         try {
@@ -231,6 +257,7 @@ public class PlayerTest extends TestCase {
     }
 
     /** Bad input: locking a team with fewer than three throws. */
+    @Test
     public void testLockTeamIncomplete() {
         player.addCharacter(a);
         player.addCharacter(b);
@@ -246,6 +273,7 @@ public class PlayerTest extends TestCase {
     }
 
     /** Normal case: a locked team reports locked. */
+    @Test
     public void testIsTeamLockedTrue() {
         player.addCharacter(a);
         player.addCharacter(b);
@@ -255,6 +283,7 @@ public class PlayerTest extends TestCase {
     }
 
     /** Bad input: an unlocked team reports not locked. */
+    @Test
     public void testIsTeamLockedFalse() {
         assertFalse(player.isTeamLocked());
     }

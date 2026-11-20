@@ -1,9 +1,11 @@
-import student.TestCase;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for the BattleManager class.
  */
-public class BattleManagerTest extends TestCase {
+public class BattleManagerTest {
 
     private BattleManager battleManager;
     private Player player1;
@@ -18,6 +20,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Sets up players and characters before each test.
      */
+    @BeforeEach
     public void setUp() {
         player1 = new Player("Player 1");
         player2 = new Player("Player 2");
@@ -47,6 +50,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests starting a battle with two full, locked teams.
      */
+    @Test
     public void testStartBattle() {
         battleManager.startBattle();
 
@@ -58,6 +62,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests starting a battle with incomplete teams.
      */
+    @Test
     public void testStartBattleIncompleteTeams() {
         Player incompletePlayer = new Player("Incomplete");
         incompletePlayer.addCharacter(
@@ -78,6 +83,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests retrieving the active character.
      */
+    @Test
     public void testGetActiveCharacter() {
         assertEquals(character1,
             battleManager.getActiveCharacter(player1));
@@ -86,6 +92,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests retrieving the active character from an empty team.
      */
+    @Test
     public void testGetActiveCharacterEmptyTeam() {
         Player emptyPlayer = new Player("Empty");
 
@@ -95,6 +102,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests attacking an opponent.
      */
+    @Test
     public void testAttack() {
         int originalHealth = character4.getHealth();
 
@@ -107,6 +115,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests attacking with a null attacker.
      */
+    @Test
     public void testAttackNullAttacker() {
         int originalHealth = character4.getHealth();
 
@@ -118,6 +127,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests attacking with a defeated attacker.
      */
+    @Test
     public void testAttackDefeatedAttacker() {
         character1.takeDamage(100);
 
@@ -131,6 +141,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests that defense reduces incoming damage.
      */
+    @Test
     public void testAttackAgainstDefendingCharacter() {
         battleManager.defend(character4);
 
@@ -152,6 +163,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests activating a defensive move.
      */
+    @Test
     public void testDefend() {
         battleManager.defend(character1);
 
@@ -161,6 +173,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests defending with null.
      */
+    @Test
     public void testDefendNull() {
         battleManager.defend(null);
 
@@ -170,6 +183,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests removing a defeated front character.
      */
+    @Test
     public void testCheckDefeatedCharacters() {
         character1.takeDamage(100);
 
@@ -182,6 +196,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests checking teams when no characters are defeated.
      */
+    @Test
     public void testCheckDefeatedCharactersNoneDefeated() {
         int originalSize = player1.getTeam().size();
 
@@ -194,6 +209,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests that the faster character's player goes first.
      */
+    @Test
     public void testDetermineFirstPlayer() {
         assertEquals(player1, battleManager.determineFirstPlayer());
     }
@@ -201,6 +217,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests that Player 1 goes first when speeds are equal.
      */
+    @Test
     public void testDetermineFirstPlayerTie() {
         Character fastTieCharacter =
             new Character("Tie", 20, 10, 5, 100);
@@ -222,6 +239,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests advancing to the other player's turn.
      */
+    @Test
     public void testAdvanceTurn() {
         battleManager.startBattle();
 
@@ -235,6 +253,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests retrieving the current player before battle starts.
      */
+    @Test
     public void testGetCurrentPlayerBeforeBattle() {
         assertNull(battleManager.getCurrentPlayer());
     }
@@ -242,6 +261,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests that the game is not over during an active battle.
      */
+    @Test
     public void testIsGameOver() {
         battleManager.startBattle();
 
@@ -251,6 +271,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests that the game ends when one team is empty.
      */
+    @Test
     public void testIsGameOverEmptyTeam() {
         character1.takeDamage(100);
         character2.takeDamage(100);
@@ -264,6 +285,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests retrieving the winner after the battle ends.
      */
+    @Test
     public void testGetWinner() {
         character1.takeDamage(100);
         character2.takeDamage(100);
@@ -277,6 +299,7 @@ public class BattleManagerTest extends TestCase {
     /**
      * Tests retrieving the winner before the battle ends.
      */
+    @Test
     public void testGetWinnerBeforeGameOver() {
         assertNull(battleManager.getWinner());
     }

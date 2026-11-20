@@ -1,15 +1,18 @@
-import student.TestCase;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for the Character class.
  */
-public class CharacterTest extends TestCase {
+public class CharacterTest {
 
     private Character character;
 
     /**
      * Creates a character before each test.
      */
+    @BeforeEach
     public void setUp() {
         character = new Character("Jester", 20, 15, 5, 100);
     }
@@ -17,6 +20,7 @@ public class CharacterTest extends TestCase {
     /**
      * Tests the constructor and getters.
      */
+    @Test
     public void testConstructorAndGetters() {
         assertEquals("Jester", character.getName());
         assertEquals(20, character.getSpeed());
@@ -31,6 +35,7 @@ public class CharacterTest extends TestCase {
     /**
      * Tests taking damage.
      */
+    @Test
     public void testTakeDamage() {
         character.takeDamage(30);
 
@@ -41,6 +46,7 @@ public class CharacterTest extends TestCase {
     /**
      * Tests that health cannot go below zero.
      */
+    @Test
     public void testTakeDamageBelowZero() {
         character.takeDamage(150);
 
@@ -51,6 +57,7 @@ public class CharacterTest extends TestCase {
     /**
      * Tests taking zero damage.
      */
+    @Test
     public void testTakeZeroDamage() {
         character.takeDamage(0);
 
@@ -61,6 +68,7 @@ public class CharacterTest extends TestCase {
     /**
      * Tests the defend method.
      */
+    @Test
     public void testDefend() {
         character.defend();
 
@@ -70,6 +78,7 @@ public class CharacterTest extends TestCase {
     /**
      * Tests ending the defense state.
      */
+    @Test
     public void testEndDefense() {
         character.defend();
         character.endDefense();
@@ -80,6 +89,7 @@ public class CharacterTest extends TestCase {
     /**
      * Tests that a character with zero health is not alive.
      */
+    @Test
     public void testIsAlive() {
         assertTrue(character.isAlive());
 
